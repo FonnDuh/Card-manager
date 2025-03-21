@@ -63,24 +63,28 @@ export async function toggleFavorite(
   removeOnUnfavorite: boolean = false
 ) {
   if (!card._id || !user) return;
+
   try {
     await likeCard(card._id);
-    setCards((prevCards: Card[]) =>
+
+    setCards((prevCards) =>
       prevCards
         .map((existingCard) => {
           if (existingCard._id !== card._id) return existingCard;
-          const isLiked =
-              Array.isArray(existingCard.likes) &&
-              existingCard.likes.includes(user._id!),
-            updatedLikes = isLiked
-              ? existingCard.likes?.filter((id) => id !== user._id)
-              : [...(existingCard.likes || []), user._id!];
-          return { ...existingCard, likes: updatedLikes };
+
+          const likesArray = existingCard.likes ?? [],
+            isLiked = likesArray.includes(user._id!);
+
+          return {
+            ...existingCard,
+            likes: isLiked
+              ? likesArray.filter((id) => id !== user._id!)
+              : [...likesArray, user._id!],
+          };
         })
         .filter((existingCard) =>
           removeOnUnfavorite
-            ? Array.isArray(existingCard.likes) &&
-              existingCard.likes.includes(user._id!)
+            ? (existingCard.likes ?? []).includes(user._id!)
             : true
         )
     );
