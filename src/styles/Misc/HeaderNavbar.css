@@ -1,0 +1,79 @@
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+body.dark-mode .navbar-toggler {
+  border-color: white;
+  stroke: white;
+}
+
+.header nav a {
+  color: #121212;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+.header nav a:hover {
+  text-decoration: none;
+  color: white;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.header .logo {
+  height: 35px;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.header .logo:hover {
+  transform: rotate(10deg) scale(1.1);
+  -webkit-transform: rotate(10deg) scale(1.1);
+  -moz-transform: rotate(10deg) scale(1.1);
+  -ms-transform: rotate(10deg) scale(1.1);
+  -o-transform: rotate(10deg) scale(1.1);
+}
+
+body.dark-mode .header nav a {
+  color: #e0e0e0;
+}
+
+@media screen and (max-width: 992px) {
+  .header nav a {
+    font-size: 1.1rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .header nav a {
+    width: 60%;
+    font-size: 1rem;
+    margin: 5px;
+    padding: 0.3rem 0.8rem;
+  }
+}

@@ -1,0 +1,261 @@
+.main-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  margin: 30px;
+  background: #f8f9fa;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .main-menu-container {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.main-menu-container .row {
+  gap: 20px;
+}
+
+.icon-btn {
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: #f8f9fa;
+  font-weight: 600;
+  font-family: inherit;
+  transition: width 0.2s ease-in-out;
+  -webkit-transition: width 0.2s ease-in-out;
+  -moz-transition: width 0.2s ease-in-out;
+  -ms-transition: width 0.2s ease-in-out;
+  -o-transition: width 0.2s ease-in-out;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+.add-btn:hover {
+  width: 120px;
+}
+
+.add-btn::before,
+.add-btn::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: #121212;
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  -webkit-transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  -moz-transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  -ms-transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  -o-transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+}
+
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: #121212;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.filter-switch {
+  --_switch-bg-clr: #3d6affcc;
+  --_slider-bg-clr: #f0f0f0cc;
+  --_slider-bg-clr-on: #a3c1e0;
+  --_switch-padding: 4px;
+  --_label-padding: 1rem 2rem;
+  --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  color: #1a1a1a;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  isolation: isolate;
+  border-radius: 9999px;
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  -ms-border-radius: 9999px;
+  -o-border-radius: 9999px;
+}
+
+.filter-switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.filter-switch > span {
+  display: grid;
+  place-content: center;
+  user-select: none;
+  padding: var(--_label-padding);
+  transition: opacity 300ms ease-in-out 150ms;
+  -webkit-transition: opacity 300ms ease-in-out 150ms;
+  -moz-transition: opacity 300ms ease-in-out 150ms;
+  -ms-transition: opacity 300ms ease-in-out 150ms;
+  -o-transition: opacity 300ms ease-in-out 150ms;
+}
+.filter-switch::before,
+.filter-switch::after {
+  content: "";
+  position: absolute;
+  transition: inset 150ms ease-in-out;
+  -webkit-transition: inset 150ms ease-in-out;
+  -moz-transition: inset 150ms ease-in-out;
+  -ms-transition: inset 150ms ease-in-out;
+  -o-transition: inset 150ms ease-in-out;
+  border-radius: inherit;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+}
+.filter-switch::before {
+  background-color: var(--_slider-bg-clr);
+  inset: var(--_switch-padding) 50% var(--_switch-padding)
+    var(--_switch-padding);
+  z-index: -1;
+  box-shadow: inset 0 1px 1px #0000004d, 0 1px #ffffff4d;
+  transition: inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  -webkit-transition: inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  -moz-transition: inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  -ms-transition: inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  -o-transition: inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+}
+.filter-switch::after {
+  background-color: var(--_switch-bg-clr);
+  inset: 0;
+  z-index: -2;
+}
+.filter-switch:focus-within::after {
+  inset: -0.25rem;
+}
+.filter-switch:has(input:checked):hover > span:first-of-type,
+.filter-switch:has(input:not(:checked)):hover > span:last-of-type {
+  opacity: 1;
+  transition-delay: 0ms;
+  transition-duration: 100ms;
+}
+.filter-switch:has(input:checked):hover::before {
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    45%;
+}
+.filter-switch:has(input:not(:checked)):hover::before {
+  inset: var(--_switch-padding) 45% var(--_switch-padding)
+    var(--_switch-padding);
+}
+.filter-switch:has(input:checked)::before {
+  background-color: var(--_slider-bg-clr-on);
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    50%;
+}
+.filter-switch > span:last-of-type,
+.filter-switch > input:checked + span:first-of-type {
+  opacity: 0.75;
+}
+.filter-switch > input:checked ~ span:last-of-type {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .main-menu-container {
+    padding: 60px 10px;
+  }
+}

@@ -1,0 +1,85 @@
+.wavy-dots-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+  z-index: 1000;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 4px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  animation: wavyDots 1.5s ease-in-out infinite,
+    colorChange 6s ease-in-out infinite;
+  -webkit-animation: wavyDots 1.5s ease-in-out infinite,
+    colorChange 6s ease-in-out infinite;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation-delay: 0.1s;
+}
+
+.dot-3 {
+  animation-delay: 0.2s;
+}
+
+.dot-4 {
+  animation-delay: 0.3s;
+}
+
+.dot-5 {
+  animation-delay: 0.4s;
+}
+
+.dot-6 {
+  animation-delay: 0.5s;
+}
+
+@keyframes wavyDots {
+  0%,
+  100% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #ffcccc;
+  }
+  20% {
+    background-color: #ffe6cc;
+  }
+  40% {
+    background-color: #ccffcc;
+  }
+  60% {
+    background-color: #ccffe6;
+  }
+  80% {
+    background-color: #cce6ff;
+  }
+  100% {
+    background-color: #ccccff;
+  }
+}

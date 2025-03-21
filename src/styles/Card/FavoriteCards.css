@@ -1,0 +1,35 @@
+.favorite-cards-container {
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: #f8f9fa;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .favorite-cards-container {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.favorite-cards-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.favorite-cards-container .loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+@media screen and (max-width: 768px) {
+  .favorite-cards-container {
+    padding: 40px 10px;
+  }
+}

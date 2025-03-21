@@ -1,0 +1,78 @@
+.modal-content {
+  background: #ffffffe6;
+  box-shadow: 0 4px 15px #00000033;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+body.dark-mode .modal-content {
+  background: #1e1e1ee6;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  box-shadow: 0 4px 15px #ffffff33;
+}
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
+
+.modal-footer {
+  padding-top: 0;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+body.dark-mode.modal-title {
+  color: #ffffff;
+}
+
+.btn-close {
+  filter: brightness(0.3);
+  -webkit-filter: brightness(0.3);
+}
+
+body.dark-mode .btn-close {
+  filter: brightness(0.8);
+  -webkit-filter: brightness(0.8);
+}
+
+.custom-modal img {
+  max-height: 250px;
+  object-fit: cover;
+  border: 1px solid #0000001a;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.custom-modal a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.custom-modal a:hover {
+  text-decoration: underline;
+}
+
+body.dark-mode .custom-modal a {
+  color: #66bfff;
+}
+
+body.dark-mode .custom-modal a:hover {
+  color: #99dfff;
+}
