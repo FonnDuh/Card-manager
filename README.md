@@ -13,6 +13,7 @@ This project is a web application that enables business users to publish and man
   - Edit existing content.
   - Delete content from the system.
 - **Server-side Data Storage**: All data is managed and stored via a REST API.
+- **Dark Mode**: A theme toggle allowing users to switch between light and dark mode, implemented using useContext and a custom hook.
 
 ## Functionality
 
@@ -20,10 +21,10 @@ This project is a web application that enables business users to publish and man
 
    - Displays login and registration pages with appropriate field labels.
    - Implements password validation using regex: Passwords must contain at least one uppercase and one lowercase English letter, at least four numbers, one special character (!@#$%^&_-\_()_), and must be at least 8 characters long.
-   - Uses JWT to generate a secure token upon successful login.
-   - Stores the token in `localStorage` while avoiding the storage of sensitive user data (such as email and password).
+   - Stores the token in `localStorage` while avoiding the storage of sensitive user data.
    - Determines user permissions based on the token information.
    - Provides visual indicators for user authentication status.
+   - Uses `useAuth` (custom hook) to manage authentication across components, including login and logout functionality.
 
 2. **User Dashboard**:
 
@@ -41,22 +42,21 @@ This project is a web application that enables business users to publish and man
 
 5. **Favorites System**:
 
-   - Allows users to mark business cards as favorites.
+   - Allows users to mark and unmark business cards as favorites.
    - Provides visual indicators for favorite cards.
    - Stores the favorite status in the database.
    - Includes a dedicated page listing all favorite business cards.
-   - Allows users to remove a business card from favorites.
 
 6. **CRM System (Admin Panel)**:
 
    - Provides a dedicated CRM page accessible only to admin users.
    - Displays a table of all users and their statuses.
-   - Allows admins to update user roles (regular/business).
-   - Enables admins to delete users, except for other admin accounts.
+   - Allows admins to update user roles (regular/business) and details.
+   - Enables admins to delete and edit users.
 
 7. **Additional Features Added to the Official Requirements**:
 
-   - **Dark Mode Support**: Implemented a dark mode toggle using a custom React hook (`useDarkMode.ts`).
+   - **Dark Mode**: Implemented as a React Context (`DarkModeContext.tsx`) and a custom hook (`useDarkMode.ts`).
    - **Loading Spinner**: A reusable `LoadingSpinner.tsx` component for better UX during API calls.
    - **Error Boundaries**: Implemented in `ErrorBoundary.tsx` to catch and display UI errors.
    - **Pagination**: Added a pagination component (`Pagination.tsx`) for business cards and CRM pages.
