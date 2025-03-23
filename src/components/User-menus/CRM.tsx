@@ -15,6 +15,7 @@ import { deleteUser, getAllUsers } from "../../services/userService";
 import { errorMessage, successMessage } from "../../services/feedbackService";
 import LoadingSpinner from "../Misc/LoadingSpinner";
 import UserTable from "./userTable";
+import ErrorBoundary from "../Misc/ErrorBoundary";
 
 const Pagination = lazy(() => import("../Misc/Pagination")),
   ConfirmModal = lazy(() => import("../Misc/ConfirmModal"));
@@ -160,13 +161,15 @@ const CRM: FunctionComponent = () => {
       {filteredUsers.length === 0 ? (
         <div className="display-5">No users found</div>
       ) : (
-        <UserTable
-          users={currentUsers}
-          onDelete={(userId) => {
-            setShowDeleteModal(true);
-            setUserIdToDelete(userId);
-          }}
-        />
+        <ErrorBoundary>
+          <UserTable
+            users={currentUsers}
+            onDelete={(userId) => {
+              setShowDeleteModal(true);
+              setUserIdToDelete(userId);
+            }}
+          />
+        </ErrorBoundary>
       )}
       <Suspense fallback={<LoadingSpinner />}>
         <Pagination
@@ -175,21 +178,25 @@ const CRM: FunctionComponent = () => {
           paginate={paginate}
           currentPage={currentPage}
         />
-        <ConfirmModal
-          show={showDeleteModal}
-          message={
-            userToDelete
-              ? `Are You Sure You Want To Delete This User? (${
-                  userToDelete.name.first
-                } ${userToDelete.name.middle || ""} ${userToDelete.name.last})`
-              : "User not found"
-          }
-          onConfirm={handleDelete}
-          onCancel={() => {
-            setShowDeleteModal(false);
-            setUserIdToDelete(null);
-          }}
-        />
+        <ErrorBoundary>
+          <ConfirmModal
+            show={showDeleteModal}
+            message={
+              userToDelete
+                ? `Are You Sure You Want To Delete This User? (${
+                    userToDelete.name.first
+                  } ${userToDelete.name.middle || ""} ${
+                    userToDelete.name.last
+                  })`
+                : "User not found"
+            }
+            onConfirm={handleDelete}
+            onCancel={() => {
+              setShowDeleteModal(false);
+              setUserIdToDelete(null);
+            }}
+          />
+        </ErrorBoundary>
       </Suspense>
     </div>
   );

@@ -4,10 +4,11 @@ import NavBarLinks from "./Misc/NavBarLinks";
 import ProfileMenu from "./Misc/ProfileMenu";
 import { lazy, Suspense } from "react";
 import "../styles/Header.css";
-import "../styles/Misc/HeaderNavbar.css"
+import "../styles/Misc/HeaderNavbar.css";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { useAuth } from "../hooks/useAuth";
 import Weather from "./Misc/Weather";
+import ErrorBoundary from "./Misc/ErrorBoundary";
 
 const ConfirmModal = lazy(() => import("./Misc/ConfirmModal"));
 
@@ -95,9 +96,13 @@ const Header: FunctionComponent = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <NavBarLinks user={user} />
+            <ErrorBoundary>
+              <NavBarLinks user={user} />
+            </ErrorBoundary>
             <div className="navbar-nav ms-auto d-flex align-items-center flex-row">
-              <Weather />
+              <ErrorBoundary>
+                <Weather />
+              </ErrorBoundary>
               {(location.pathname === "/" ||
                 location.pathname === "/search") && (
                 <form
@@ -141,15 +146,19 @@ const Header: FunctionComponent = () => {
                   </svg>
                 </div>
               </label>
-              <ProfileMenu onLogout={() => setShowLogoutModal(true)} />
-              <Suspense fallback={null}>
-                <ConfirmModal
-                  show={showLogoutModal}
-                  message="Are you sure you want to logout?"
-                  onConfirm={logout}
-                  onCancel={() => setShowLogoutModal(false)}
-                />
-              </Suspense>
+              <ErrorBoundary>
+                <ProfileMenu onLogout={() => setShowLogoutModal(true)} />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Suspense fallback={null}>
+                  <ConfirmModal
+                    show={showLogoutModal}
+                    message="Are you sure you want to logout?"
+                    onConfirm={logout}
+                    onCancel={() => setShowLogoutModal(false)}
+                  />
+                </Suspense>
+              </ErrorBoundary>
             </div>
           </div>
         </nav>

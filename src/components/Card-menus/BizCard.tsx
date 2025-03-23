@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/Card/BizCard.css";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import { useAuth } from "../../hooks/useAuth";
+import ErrorBoundary from "../Misc/ErrorBoundary";
 
 interface BizCardProps {
   card: Card;
@@ -164,12 +165,14 @@ const BizCard: FunctionComponent<BizCardProps> = ({
           showModal={showModal}
           handleClose={() => setShowModal(false)}
         />
-        <ConfirmModal
-          show={showDeleteModal}
-          message="Are you sure you want to delete this card?"
-          onConfirm={handleDelete}
-          onCancel={() => setShowDeleteModal(false)}
-        />
+        <ErrorBoundary>
+          <ConfirmModal
+            show={showDeleteModal}
+            message="Are you sure you want to delete this card?"
+            onConfirm={handleDelete}
+            onCancel={() => setShowDeleteModal(false)}
+          />
+        </ErrorBoundary>
       </Suspense>
     </>
   );
