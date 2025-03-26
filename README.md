@@ -67,6 +67,43 @@ This project is a web application that enables business users to publish and man
    - Uses `axios` to handle HTTP requests between the client and the server.
    - Implements error handling with `try & catch` for asynchronous requests or `.then().catch()` as an alternative.
 
+## Additional Functionality
+
+1. **Search System**:
+
+   - Real-time search with debouncing (300ms delay)
+   - URL-based search state management
+   - Search functionality only available on home and search pages
+   - Search state preservation across navigation
+
+2. **Navigation Features**:
+
+   - Custom navigation handling with React Router
+   - Breadcrumb navigation system
+   - Protected routes for authenticated users
+   - Role-based access control (business/admin routes)
+
+3. **Security Features**:
+
+   - Token expiration handling
+   - Cross-tab authentication sync
+   - Session management
+   - Automatic logout on token invalidation
+
+4. **UI/UX Features**:
+
+   - Responsive navbar with collapsible menu
+   - Custom logo integration
+   - Confirmation modals for important actions
+   - Lazy-loaded components for better performance
+   - Error boundaries for component-level error handling
+
+5. **State Management**:
+   - Custom hooks for auth management (`useAuth`)
+   - Dark mode persistence across sessions
+   - Form state management with Formik
+   - Global error handling
+
 ## Technologies
 
 - **Frontend**: React + TypeScript (using Vite as the main build tool)
