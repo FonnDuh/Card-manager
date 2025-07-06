@@ -8,7 +8,7 @@ import {
 import { User } from "../interfaces/Users/User";
 import { decodeToken } from "../services/tokenService";
 import { CustomJwtPayload } from "../interfaces/Users/CustomJwtPayload";
-import { getUserbyId } from "../services/userService";
+import { getUserById } from "../services/userService";
 
 interface AuthContextType {
   user: User | null;
@@ -34,7 +34,7 @@ export const AuthProvider: FunctionComponent<AuthProviderProps> = ({
   const login = (token: string) => {
     sessionStorage.setItem("token", token);
     const cleanToken = decodeToken(token) as CustomJwtPayload;
-    getUserbyId(cleanToken._id)
+    getUserById(cleanToken._id)
       .then((res) => setUser(res.data))
       .catch(() => setUser(null));
   };
@@ -42,6 +42,9 @@ export const AuthProvider: FunctionComponent<AuthProviderProps> = ({
   const logout = () => {
     sessionStorage.removeItem("token");
     setUser(null);
+    if (window.location.pathname !== "/") {
+      window.location.href = "/";
+    }
   };
 
   useEffect(() => {

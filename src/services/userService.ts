@@ -23,7 +23,7 @@ export function getAllUsers() {
 }
 
 // Get user by id
-export function getUserbyId(id: string) {
+export function getUserById(id: string) {
   return axios.get(`${API}/${id}`, {
     headers: {
       "x-auth-token": sessionStorage.getItem("token"),
@@ -32,7 +32,7 @@ export function getUserbyId(id: string) {
 }
 
 // Update user by id
-export function updateUser(id: string, updatedUser: Partial<User>) {
+export function updateUser(id: string, updatedUser: User) {
   return axios.put(`${API}/${id}`, updatedUser, {
     headers: {
       "x-auth-token": sessionStorage.getItem("token"),

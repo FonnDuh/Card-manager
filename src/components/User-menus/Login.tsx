@@ -17,7 +17,7 @@ const formOnSubmit = async (
 ) => {
   try {
     const response = await loginUser(values),
-      token = response.data;
+      token = response.data.token;
     if (token) {
       login(token);
       helpers.resetForm();
@@ -67,8 +67,8 @@ const Login: FunctionComponent<object> = () => {
           .max(20)
           .required("Password is required")
           .matches(
-            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*\-"])[A-Za-z\d!@#$%^&*\-"]{8,}$/,
-            'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*-"), and be at least 8 characters long'
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*\-"])[A-Za-z\d!@#$%^&*\-"]{7,}$/,
+            'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*-"), and be at least 7 characters long'
           ),
       }),
     []

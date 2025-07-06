@@ -12,6 +12,8 @@ export const getInitialValues = (user: User) => ({
     last: user?.name?.last || "",
   },
   phone: user?.phone || "",
+  email: user?.email || "",
+  password: user?.password || "",
   image: {
     url: user?.image?.url || "",
     alt: user?.image?.alt || "",
@@ -25,6 +27,7 @@ export const getInitialValues = (user: User) => ({
     zip: user?.address?.zip || 0,
   },
   isBusiness: user?.isBusiness || false,
+  isAdmin: user?.isAdmin || false,
 });
 
 export const getValidationSchema = (isUserAdmin: boolean) => {
@@ -62,9 +65,8 @@ export const onSubmit = async (
   isAdmin: boolean,
   originalIsBusiness: boolean
 ) => {
-  const { isBusiness, ...userValues } = values;
   try {
-    if (isAdmin && originalIsBusiness !== isBusiness) {
+    if (isAdmin && originalIsBusiness !== values.isBusiness) {
       try {
         await changeBizStatus(userId);
         successMessage("Business status change successful");
@@ -93,8 +95,12 @@ export const onSubmit = async (
         return;
       }
     }
-    const response = await updateUser(userId, userValues);
+    const response = await updateUser(userId, values as User);
     if (response) {
+      if (response.data.token) {
+        sessionStorage.setItem("token", response.data.token);
+      }
+
       successMessage("Profile updated successfully");
       navigate("/profile/" + userId);
     } else {

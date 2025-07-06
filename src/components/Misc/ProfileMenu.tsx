@@ -15,7 +15,7 @@ const ProfileMenu: FunctionComponent<ProfileMenuProps> = ({ onLogout }) => {
           <>
             <Link to={`/profile/${user._id}`}>
               <img
-                src={user.image?.url}
+                src={user.image?.url || "src/assets/default-profile.jpg"}
                 alt="User Profile"
                 className="profile-img"
               />
