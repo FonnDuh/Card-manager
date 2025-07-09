@@ -96,7 +96,7 @@ export async function toggleFavorite(
 // Change card bizNumber
 export function changeBizNumber(cardId: string, newBizNumber: number) {
   return axios.patch(
-    `${API}/${cardId}`,
+    `${API}/${cardId}/bizNumber`,
     { bizNumber: newBizNumber },
     {
       headers: {

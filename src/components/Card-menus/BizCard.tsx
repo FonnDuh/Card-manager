@@ -76,7 +76,7 @@ const BizCard: FunctionComponent<BizCardProps> = ({
           }`}>
           <img
             className="card-img-top object-fit-cover"
-            src={card.image?.url || "https://via.placeholder.com/150"}
+            src={card.image?.url || "src/assets/default-background.jpg"}
             alt={card.image?.alt || "Business Card Image Alt"}
           />
           <div className="card-body flex-column justify-content-evenly">

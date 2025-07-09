@@ -6,7 +6,7 @@ import {
   Suspense,
 } from "react";
 import { User } from "../../interfaces/Users/User";
-import { getUserbyId } from "../../services/userService";
+import { getUserById } from "../../services/userService";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import LoadingSpinner from "../Misc/LoadingSpinner";
@@ -86,7 +86,7 @@ const Profile: FunctionComponent<object> = () => {
         return;
       }
       try {
-        const response = await getUserbyId(userId),
+        const response = await getUserById(userId),
           userData = response.data;
         // For some reason when address.state is empty the API returns it as "not defined", hence the check
         if (userData.address && userData.address.state === "not defined") {

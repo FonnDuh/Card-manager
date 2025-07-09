@@ -1,7 +1,7 @@
 import { FunctionComponent, Suspense, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
-import { getUserbyId } from "../../services/userService";
+import { getUserById } from "../../services/userService";
 import {
   getInitialValues,
   onSubmit,
@@ -26,7 +26,7 @@ const EditProfile: FunctionComponent = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const { data } = await getUserbyId(userId!);
+        const { data } = await getUserById(userId!);
         // For some reason when address.state is empty the API returns it as "not defined", hence the check
         if (data.address && data.address.state === "not defined") {
           data.address.state = "";
